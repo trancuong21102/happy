@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Rubik:ital,wght@0,400;0,600;0,800;0,900;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./function.js">
+    <title>Happy New Year</title>
+</head>
+<body>
+    <video autoplay muted loop id="myVideo">
+        <source src="./img/Không có tiêu đề.mp4" type="video/mp4">
+        Your browser does not support HTML5 video.
+      </video>
+    <div class="wrapper">
+
+        <div class="form" id="popup">
+            <h3>Title</h3>
+            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Beatae voluptates similique harum modi repudiandae fugit inventore ab minima recusandae temporibus accusamus, esse, maxime quae excepturi nisi consequuntur! Enim, esse odit?</p>
+            <button onclick="closePopup()">Cam on</button>
+        </div>
+        <div class="title">
+            <p>HAPPY NEW YEAR</p>
+        </div>
+        <div class="img">
+            <div class="button">
+                <button onclick="openPopup()" >Open</button>
+            </div>
+            <img src="./img/e913216361b5bad0a38870bc7b13751c.jpeg" alt="">
+            <div class="money">
+                <div class="page">
+                    <h3>
+                        TItle
+                    </h3>
+                    <p>
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus aperiam repudiandae similique facilis neque ab maiores corrupti quisquam quaerat repellendus. Doloribus vel corrupti at neque quisquam sequi ex, corporis dicta.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script>
+    let openForm = document.getElementById("popup");
+
+
+function openPopup(){
+    openForm.classList.add("pop-up");
+}
+
+function closePopup(){
+    openForm.classList.remove("pop-up");
+}
+</script>
+</html>
