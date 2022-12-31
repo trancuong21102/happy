@@ -89,6 +89,7 @@ font-family: 'Rubik', sans-serif;
     display: none;
     transform:scale(0.5);
     transition: transform 3s;
+    overflow: scroll;
 }
 
 .form button{
