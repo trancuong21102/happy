@@ -4,54 +4,107 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Rubik:ital,wght@0,400;0,600;0,800;0,900;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="./function.js">
-    <title>Happy New Year</title>
+    <title>Document</title>
+    <link rel="stylesheet" href="index.html">
+    <style>
+        body{
+            background: #000;
+            text-align: center;
+        }
+        a{
+            text-decoration: none;
+            color:#fff;
+        }
+        #countdown{
+            display:flex;
+            justify-content: center;
+            align-items: center;
+            color:#fff;
+            margin-top: 100px;
+            margin-bottom: 50px;
+        }
+
+        .link{
+            padding: 10px 20px;
+            background-color: #f18833;
+            border-radius: 10px;;
+        }
+        .link a{
+            color:#fff;
+        }
+    </style>
 </head>
 <body>
-    <video autoplay muted loop id="myVideo">
-        <source src="./img/Không có tiêu đề.mp4" type="video/mp4">
-        Your browser does not support HTML5 video.
-      </video>
-    <div class="wrapper">
+    <table id="countdown">
+        <tr id="countdown-timer">
+            <td><span id="days">x</span></td>
+            <td><span id="hours">x</span></td>
+            <td><span id="minutes">x</span></td>
+            <td><span id="seconds">x</span></td>
+        </tr>
+        <tr id="countdown-labels">
+            <td><span>Days</span></td>
+            <td><span>Hours</span></td>
+            <td><span>Minutes</span></td>
+            <td><span>Seconds</span></td>
+        </tr>
 
-        <div class="form" id="popup">
-            <h3>Chúc Mừng Năm Mới 2023</h3>
-            <p>Kết thúc năm 2022 chúng ta đã có những chuyến đi tuyệt vời (mặc dù chuyến đi hơi ngắn ngủi ^^), chúng ta đã có với nhau 1 đứa coan =)) và đã có những khoảng nợ ngập đầu (nma trả xong hết rùi  hehe) và đặc biệt là a đã có những ngày tháng được ở chung dí em (moạ ở xong nghiền về nhà anh lại thấy chán)..... Lói chung là kết thúc 2022 rồi 2023 này sẽ làm lại một năm hoàn hảo hơn cùng anh nhé chúng ta p có nhiều tiền ( ko để nợ nữa fckk nợ nhiều a mệt lắm nhiều đêm ko ngủ được), học sẽ chăm hơn để hướng tới học bổng bỏ lỡ nhiều kì rồi năm nay sẽ thực hiện theo cái lịch trong tuần của em (chăm chỉ thể dục học hành và hành :)) ) thui nói chung là năm mới chúc em iu ngày càng xinh đẹp học giỏi và muốn gì được đấy (anh sẽ ráng trả ít nhất mấy món trong cái shoppee của em hehe ) </p>
-            <button onclick="closePopup()">Cam on</button>
-        </div>
-        <div class="title">
-            <p>HAPPY NEW YEAR</p>
-        </div>
-        <div class="img">
-            <div class="button">
-                <button onclick="openPopup()" >Open</button>
-            </div>
-            <img src="./img/e913216361b5bad0a38870bc7b13751c.jpeg" alt="">
-            <div class="money">
-                <div class="page">
-                    <h3>
-                        TItle
-                    </h3>
-                    <p>
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus aperiam repudiandae similique facilis neque ab maiores corrupti quisquam quaerat repellendus. Doloribus vel corrupti at neque quisquam sequi ex, corporis dicta.
-                    </p>
-                </div>
-            </div>
-        </div>
-    </div>
+    </table>
+    <a class="link" href="./happy.html">
+        Click here!!
+    </a>
 </body>
 <script>
-    let openForm = document.getElementById("popup");
+    const storeOpening = new Date('jan 01, 2023 00:00:00');
+
+setCountdown(storeOpening); // Calls setCoundown once
+
+setInterval(function(){
+
+    setCountdown(storeOpening);
+},1000)
 
 
-function openPopup(){
-    openForm.classList.add("pop-up");
+function setCountdown(countingDownTime) {
+
+    let now = new Date();
+
+    let timeRemaining = countingDownTime - now;
+
+    console.log(timeRemaining); // timeRemaining is time left in milliseconds!
+ // Seconds
+ let seconds = Math.floor(timeRemaining / 1000);
+    // Minutes
+    let minutes = Math.floor(timeRemaining / (1000*60));
+    // Hours 
+    let hours = Math.floor(timeRemaining / (1000*60*60));
+    // Days
+    let days = Math.floor(timeRemaining / (1000*60*60*24));
+
+    console.log(days, hours, minutes, seconds); // Absolute time left in each unit!
+    let daysToDisplay = days;
+
+// Subtract 24 hours for every day remaining from the hour count
+let hoursToDisplay = hours - (days * 24);
+// Subtract 60 minutes for every hour remaining from the minute count
+let minutesToDisplay = minutes - ( hours * 60 );
+// Subtract 60 seconds for every minute remaining from the seconds count
+let secondsToDisplay = seconds - ( minutes * 60 );
+
+console.log(daysToDisplay, hoursToDisplay, minutesToDisplay, secondsToDisplay);
+// Countdown now in displayable format!
+ // Print to DOM
+ const daysEl = document.getElementById('days');
+    const hoursEl = document.getElementById('hours');
+    const minutesEl = document.getElementById('minutes');
+    const secondsEl = document.getElementById('seconds');
+
+    daysEl.textContent = daysToDisplay;
+    hoursEl.textContent = hoursToDisplay;
+    minutesEl.textContent = minutesToDisplay;
+    secondsEl.textContent = secondsToDisplay;
+
 }
 
-function closePopup(){
-    openForm.classList.remove("pop-up");
-}
 </script>
 </html>
